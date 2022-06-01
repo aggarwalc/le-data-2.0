@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport">
+  <title>Le Data 2.0</title>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav class="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-blue-500 shadow-md">
+      <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static">
+          <a class="text-xl w-full text-center font-bold leading-relaxed inline-block py-2 whitespace-nowrap uppercase text-white" href="#pablo">
+            Le Data 2.0
+          </a>
+        </div>
+        <div class="lg:flex flex-grow items-center">
+          <ul class="flex flex-row w-full navw text-center lg:flex-row list-none ml-auto">
+              <li class="nav-item navflex text-center">
+                <a class="px-3 py-2 items-center text-xs uppercase font-bold text-white hover:opacity-75" href="#racingbarchart">
+                  Racing Bar Chart
+                </a>
+              </li>
+              <li class="nav-item navflex text-center">
+                <a class="px-3 py-2 items-center text-xs uppercase font-bold text-white hover:opacity-75" href="#linecharts">
+                  Line Charts
+                </a>
+              </li>
+              <li class="nav-item navflex text-center">
+                <a class="px-3 py-2 items-center text-xs uppercase font-bold text-white hover:opacity-75" href="#extras">
+                  Extras
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="shadow-xl">
+      <div class="flex flex-col md:flex-row">
+        <div class="bg-blue-400 padding text-center flex-1">
+          <h1 class="text-4xl text-white">Le Data 2.0</h1>
+          <p class="text-2xl text-white">Stack Overflow</p>
+          <p class="text-2xl text-white">___</p>
+          <p class="text-md text-white">Chirag Aggarwal</p>
+        </div>
+        <div class="flex-1">
+          <img class="w-full h-full p-0 object-cover" src="cloud.png" alt="img" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 blue" id="racingbarchart">
+      <div class="container text-center mx-auto">
+        <h1 class="text-2xl font-bold">General Programming Languages</h1>
+        <h2>Racing Bar Chart</h2>
+      </div>
+      <div class="py-5 barwidth mx-auto">
+        <h1 class="text-lg font-bold">Question counts by tag in Stack Overflow</h1>
+        <p class="text-sm">Credit: Mike Bostock - <a class="hover:text-gray-400 text-blue-400" href="https://observablehq.com/@d3/bar-chart-race">Bar Chart Race</a></p>
+        <p class="text-sm">Data: <a class="hover:text-gray-400 text-blue-400 text-sm" href="https://data.stackexchange.com/">Stack Exchange</a></p>
+        <div name="chart"></div>
+        <div class="py-1">
+          <button name="viewof replay" class="bg-blue-400 text-white font-bold uppercase text-xs px-1 py-1 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            Replay
+          </button>
+        </div>
+
+        <script src="d3.js"></script>
+        <script type="module">
+
+            import {Runtime, Library, Inspector} from "./bar-chart/runtime.js";
+            import chart from "./bar-chart/index.js";
+
+            // Initialize the Observable Runtime, telling it to use our local copy of D3
+            // rather than loading one from a CDN.
+            const runtime = new Runtime(new Library(name => {
+              switch (name) {
+                case "d3@7": return d3;
+              }
+            }));
+
+            // Show the output of the “chart” and “viewof replay” cells in the DIV elements
+            // with the corresponding name.
+            const main = runtime.module(chart, name => {
+              if (["chart", "viewof replay"].includes(name)) {
+                return new Inspector(document.querySelector(`[name='${name}']`));
+              }
+            });
+            main.redefine("k", 6);
+        </script>
+      </div>
+    </section>
+
+    <section class="py-10 blue" id="linecharts">
+      <div class="container text-center mx-auto">
+        <h2 class="text-2xl font-bold">Line Charts</h2>
+        <ul class="inline-flex mx-auto my-2">
+          <li class="px-2">
+            <span
+              data-tag="github"
+              class="tag text-xs blueb cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-blue-400 bg-blue-200 uppercase last:mr-0 mr-1">Github
+            </span>
+          </li>
+          <li class="px-2">
+            <span
+              data-tag="stack overflow"
+              class="tag text-xs blueb hover:text-white cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-white bg-blue-400 uppercase last:mr-0 mr-1">Stack Overflow
+            </span>
+          </li>
+          <li class="px-2">
+            <span
+              data-tag="indeed"
+              class="tag text-xs blueb hover:text-white cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-blue-400 bg-blue-200 uppercase last:mr-0 mr-1">Indeed
+            </span>
+          </li>
+        </ul>
+        <div class="flex flex-wrap justify-center mt-2">
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="gen-prog-lang-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/f0dcf5ba41b36ed722f1d3cc21547943e7d3c5ad7e43d336614c8e9b536dceb7.jpg"
+                alt="chart"
+              />
+              <div>General Programming Languages</div>
+            </a>
+          </div>
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="mac-learn-lang-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/1b9bc53247664f56c09d7335f2e7285c0702279267809f5117ab72ee1b4c1ca4.jpg"
+                alt="chart"
+              />
+            </a>
+            <div>Machine Learning Languages</div>
+          </div>
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="mac-learn-lib-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/9539edece371a6498660c4de21344b65733d87327f29b9c6aa7bb4553d90d862.jpg"
+                alt="chart"
+              />
+            </a>
+            <div>Machine Learning Libraries</div>
+          </div>
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="frameworks-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/b06fa2c0d989b99328ce9e78a98c6de132029e2fb4bc6eeb6edcf9e249d21e4a.jpg"
+                alt="chart"
+              />
+            </a>
+            <div>Frameworks</div>
+          </div>
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="app-dev-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/501319e4022747686c1f5d4f5e66fc20fb447039b99b6203c12d1101b96b50db.jpg"
+                alt="chart"
+              />
+            </a>
+            <div>App Development</div>
+          </div>
+          <div class="content_img chart p-2" data-tags="stack overflow">
+            <a href="databases-line-chart/index.html">
+              <img
+                class="w-full h-full object-cover"
+                src="https://static.observableusercontent.com/thumbnail/3852084d96e74870d3677351579ed4b2101378d9a37302d10d2b26d5e03a6fa2.jpg"
+                alt="chart"
+              />
+            </a>
+            <div>Databases</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 blue" id="extras">
+      <div class="container text-center mx-auto">
+        <h2 class="text-2xl font-bold">Extras</h2>
+        <div class="bg-blue-400 mx-auto my-4 extrasdimensions shadow-xl rounded"></div>
+      </div>
+    </section>
+
+    <footer class="bg-blue-500 text-center py-5">
+      <p class="text-xl text-white">Built by <span class="font-bold">Chirag Aggarwal</span> :)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

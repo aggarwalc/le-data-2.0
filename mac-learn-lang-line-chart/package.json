@@ -1,0 +1,14 @@
+{
+  "name": "c4745cc0e9688715",
+  "main": "c4745cc0e9688715@721.js",
+  "version": "721.0.0",
+  "homepage": "https://observablehq.com/d/c4745cc0e9688715",
+  "author": {
+    "name": "aggarwalc",
+    "url": "https://observablehq.com/@aggarwalc"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

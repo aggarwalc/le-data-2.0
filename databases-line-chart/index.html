@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head class="blue">
+<meta charset="utf-8">
+<title>Databases</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+/>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body class="blue">
+<section class="py-6 bg-white" id="racingbarchart">
+  <div class="container text-center mx-auto">
+    <h1 class="text-2xl font-bold">Databases</h1>
+    <h2>Line Chart</h2>
+  </div>
+  <div class="py-5 barwidth mx-auto">
+    <h1 class="text-lg font-bold">Percentage of Stack Overflow questions by tag</h1>
+    <p class="text-sm">Data: <a class="hover:text-gray-400 text-blue-400 text-sm" href="https://data.stackexchange.com/">Stack Exchange</a></p>
+    <p class="text-xs py-1">Credit: Mike Bostock - <a class="hover:text-gray-400 text-blue-400" href="https://observablehq.com/@d3/multi-line-chart">Line Chart, Multiple Series</a></p>
+  <div class="observablehq">
+    <div style="display: flex; align-items: center; min-height: 33px; margin-left: 0px; font: 15px sans-serif;">
+      <style>
+
+      .-swatches-8e2aa10977e4e {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 1em;
+      }
+
+      .-swatches-8e2aa10977e4e::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5em;
+        background: var(--color);
+      }
+
+      </style>
+      <div>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #8dd3c7">db2</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #ffffb3">mysql</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #bebada">oracle</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #fb8072">postgresql</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #80b1d3">sqlite</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #fdb462">sql-server</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #b3de69">mongodb</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #fccde5">mariadb</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #d9d9d9">redis</span>
+        <span class="-swatches-8e2aa10977e4e" style="--color: #bc80bd">realm</span>
+      </div>
+    </div>
+  </div>
+  <div class="py-" name="viewof Tags"></div>
+  <div name="chart" class="py-1"></div>
+    <script type="module">
+
+    import define from "./index.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+
+    const runtime = new Runtime();
+    const main = runtime.module(define, name => {
+      if (["viewof Tags","chart", "Swatches"].includes(name)) {
+        return new Inspector(document.querySelector(`[name='${name}']`));
+      }
+    });
+
+    main.redefine("data", d3.csv("databases_results.csv", d3.autoType));
+    </script>
+  </section>
+  <div class="flex justify-center py-20">
+    <a href="/le-data-2.0-stack-overflow/index.html">
+      <button class="bg-blue-400 flex justify-center text-white font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+      Back to home page
+      </button>
+    </a>
+  </div>
+</body>

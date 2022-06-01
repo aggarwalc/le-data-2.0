@@ -1,0 +1,117 @@
+
+:root {
+  --sans-serif: sans-serif;
+}
+
+.blue {
+  background-color: #EFF6FF;
+}
+
+.bluetext {
+  --tw-text-opacity: 1;
+  color: rgba(191, 219, 254, var(--tw-text-opacity));
+
+}
+
+span.blueb:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
+  color: white;
+}
+
+.bluebnohover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
+  color: white;
+}
+
+.barwidth {
+  max-width: 1400px;
+}
+
+.extrasdimensions {
+  height: 180px;
+  max-width: 1400px;
+}
+
+.imgsize {
+  height: 16rem;
+  width: 33.333333%;
+}
+
+.navflex {
+  flex: none;
+}
+
+.navw {
+  width: auto;
+}
+
+.padding {
+  padding: 10rem;
+}
+
+.content_img{
+ position: relative;
+ width: 33.333333%;
+ float: left;
+}
+/* Child Text Container */
+.content_img div{
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ background: black;
+ color: white;
+ margin-bottom: 5px;
+ font-family: sans-serif;
+ opacity: 0;
+ visibility: hidden;
+ -webkit-transition: visibility 0s, opacity 0.5s linear;
+ transition: visibility 0s, opacity 0.5s linear;
+}
+
+/* Hover on Parent Container */
+.content_img:hover{
+ cursor: pointer;
+}
+
+.content_img:hover div{
+ width: 100%;
+ padding: 8px 15px;
+ visibility: visible;
+ opacity: 0.7;
+}
+
+
+@media screen and (max-width:775px) {
+  .imgsize {
+    height: 14rem;
+    width: 50%
+  }
+  .padding {
+    padding:2.5rem;
+  }
+  .content_img {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:1023px) {
+        .navflex {
+          flex: 1 1 0%
+        }
+}
+
+
+
+
+
+
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
