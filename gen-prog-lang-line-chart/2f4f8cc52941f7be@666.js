@@ -41,9 +41,8 @@ function _color3(d3,tags)
 }
 
 
-async function _data(d3,FileAttachment){return(
-d3.csvParse(await FileAttachment("general_languages_results.csv").text(), d3.autoType)
-)}
+function _data(FileAttachment){return(
+FileAttachment("general_languages_results.csv").csv({typed: true})
 
 function _8(data){return(
 data.slice(1,)
