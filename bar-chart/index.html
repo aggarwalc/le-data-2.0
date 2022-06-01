@@ -11,6 +11,4 @@ import {Runtime, Library, Inspector} from "./runtime.js";
 const runtime = new Runtime();
 const main = runtime.module(define, Inspector.into(document.body));
 
-main.redefine("data", d3.csv("/data/general_languages_results.csv", d3.autoType));
-
 </script>
