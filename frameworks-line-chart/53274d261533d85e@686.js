@@ -280,7 +280,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["frameworks_results.csv", {url: new URL("./files/77ed1ae941618770f421a14c61c4cf300cd0916762d86ee7b12b13be3c7c2ef2e8b7d01a20a61af067491eab16ad6979f2aef9c5e8ee438a234348e1fc19cac4", import.meta.url), mimeType: "text/csv", toString}]
+    ["frameworks_results.csv", {url: new URL("../data/frameworks_results.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer("title")).define("title", ["md"], _title);

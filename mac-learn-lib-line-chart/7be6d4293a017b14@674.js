@@ -280,7 +280,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["machine_learning_libraries_results.csv", {url: new URL("./files/9e92c33620aac0b58f65618a011124111698604efc12428b56dbfdc8afa81c9d0ae36c44fadca6b4853eb0560ef1812adb3235293bad62936ac698abe5fc37db", import.meta.url), mimeType: "text/csv", toString}]
+    ["machine_learning_libraries_results.csv", {url: new URL("../data/machine_learning_libraries_results.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer("title")).define("title", ["md"], _title);
