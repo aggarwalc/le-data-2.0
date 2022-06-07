@@ -1,0 +1,14 @@
+{
+  "name": "402b309105160b2a",
+  "main": "402b309105160b2a@915.js",
+  "version": "915.0.0",
+  "homepage": "https://observablehq.com/d/402b309105160b2a",
+  "author": {
+    "name": "aggarwalc",
+    "url": "https://observablehq.com/@aggarwalc"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
