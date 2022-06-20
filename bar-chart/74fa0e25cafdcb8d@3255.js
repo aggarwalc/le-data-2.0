@@ -4,7 +4,7 @@ Question counts by tag in Stack Overflow. Data: [Stack Exchange](https://data.st
 )}
 
 function _replay(html){return(
-html`<button>Replay`
+html`<button class="px-4 py-2">Replay`
 )}
 
 async function* _chart(replay,d3,width,height,bars,axis,labels,ticker,keyframes,duration,x,invalidation)
@@ -45,7 +45,7 @@ d3.csvParse(await FileAttachment("general_languages_results.csv").text(), d3.aut
 )}
 
 function _duration(){return(
-10
+15
 )}
 
 function _n(){return(
@@ -56,9 +56,9 @@ function _names(data){return(
 new Set(data.map(d => d.tag))
 )}
 
-function _datevalues(d3,data){return(
-Array.from(d3.rollup(data, ([d]) => d.running_count, d => d.date, d => d.tag))
-  .map(([date, data]) => [new Date(date), data])
+function _datevalues(d3,data,parse){return(
+Array.from(d3.rollup(data, ([d]) => d.running_count, d => d.date , d => d.tag))
+  .map(([date, data]) => [parse(date), data])
   .sort(([a], [b]) => d3.ascending(a, b))
 )}
 
@@ -197,7 +197,7 @@ function axis(svg) {
 }
 )}
 
-function _ticker(barSize,width,margin,n,formatDate,parse,keyframes){return(
+function _ticker(barSize,width,margin,n,formatDate,keyframes){return(
 function ticker(svg) {
   const now = svg.append("text")
       .style("font", `bold ${barSize}px var(--sans-serif)`)
@@ -206,10 +206,10 @@ function ticker(svg) {
       .attr("x", width - 6)
       .attr("y", margin.top + barSize * (n - 0.45))
       .attr("dy", "0.32em")
-      .text(formatDate(parse(keyframes[0][0])));
+      .text(formatDate(keyframes[0][0]));
 
   return ([date], transition) => {
-    transition.end().then(() => now.text(formatDate(parse(date))));
+    transition.end().then(() => now.text(formatDate(date)));
   };
 }
 )}
@@ -271,7 +271,7 @@ export default function define(runtime, observer) {
   main.variable(observer("duration")).define("duration", _duration);
   main.variable(observer("n")).define("n", _n);
   main.variable(observer("names")).define("names", ["data"], _names);
-  main.variable(observer("datevalues")).define("datevalues", ["d3","data"], _datevalues);
+  main.variable(observer("datevalues")).define("datevalues", ["d3","data","parse"], _datevalues);
   main.variable(observer("rank")).define("rank", ["names","d3","n"], _rank);
   main.variable(observer("k")).define("k", _k);
   main.variable(observer("keyframes")).define("keyframes", ["d3","datevalues","k","rank"], _keyframes);
@@ -283,7 +283,7 @@ export default function define(runtime, observer) {
   main.variable(observer("textTween")).define("textTween", ["d3","formatNumber"], _textTween);
   main.variable(observer("formatNumber")).define("formatNumber", ["d3"], _formatNumber);
   main.variable(observer("axis")).define("axis", ["margin","d3","x","width","barSize","n","y"], _axis);
-  main.variable(observer("ticker")).define("ticker", ["barSize","width","margin","n","formatDate","parse","keyframes"], _ticker);
+  main.variable(observer("ticker")).define("ticker", ["barSize","width","margin","n","formatDate","keyframes"], _ticker);
   main.variable(observer("formatDate")).define("formatDate", ["d3"], _formatDate);
   main.variable(observer("parse")).define("parse", ["d3"], _parse);
   main.variable(observer("color")).define("color", ["d3"], _color);
