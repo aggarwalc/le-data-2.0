@@ -84,7 +84,7 @@ span.blueb:hover {
 }
 
 
-@media screen and (max-width:775px) {
+@media screen and (max-width:1100px) {
   .imgsize {
     height: 14rem;
     width: 50%
