@@ -84,13 +84,13 @@ span.blueb:hover {
 }
 
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1023px) {
   .imgsize {
     height: 14rem;
     width: 50%
   }
   .padding {
-    padding:2.5rem;
+    padding:4.5rem;
   }
   .content_img {
     width: 50%;
