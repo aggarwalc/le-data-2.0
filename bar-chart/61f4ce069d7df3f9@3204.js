@@ -45,11 +45,11 @@ d3.csvParse(await FileAttachment("general_languages_results.csv").text(), d3.aut
 )}
 
 function _duration(){return(
-15
+14
 )}
 
 function _n(){return(
-6
+7
 )}
 
 function _names(data){return(
@@ -72,7 +72,7 @@ function rank(value) {
 )}
 
 function _k(){return(
-8
+6
 )}
 
 function _keyframes(d3,datevalues,k,rank)
@@ -256,7 +256,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["general_languages_results.csv", {url: new URL("./files/2ae351dd63183b4fae6646336dc7ee5ed4cc87b38b76d61c39408d19cc430e0428f20cde702eca7e356682bcd158f60e808b4f976e749986e170d72f31ff99ba", import.meta.url), mimeType: "text/csv", toString}]
+    ["general_languages_results.csv", {url: new URL("https://raw.githubusercontent.com/aggarwalc/le-data-2.0-DATA/main/Stack-Overflow/general-languages/general_languages_results.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer("title")).define("title", ["md"], _title);

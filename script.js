@@ -18,7 +18,7 @@ tagsEl.forEach(tagEl => {
         show = true;
       }
 
-      if (tag === 'stack overflow' || show) {
+      if (tag === 'all' || show) {
         chart.classList.remove('hidden');
       } else {
         chart.classList.add('hidden');
