@@ -4,7 +4,7 @@ Question counts by tag in Stack Overflow. Data: [Stack Exchange](https://data.st
 )}
 
 function _replay(html){return(
-html`<button class="px-4 py-2">REPLAY`
+html`<button>Replay`
 )}
 
 async function* _chart(replay,d3,width,height,bars,axis,labels,ticker,keyframes,duration,x,invalidation)
@@ -45,7 +45,7 @@ d3.csvParse(await FileAttachment("general_languages_results.csv").text(), d3.aut
 )}
 
 function _duration(){return(
-14
+10
 )}
 
 function _n(){return(
@@ -72,7 +72,7 @@ function rank(value) {
 )}
 
 function _k(){return(
-6
+8
 )}
 
 function _keyframes(d3,datevalues,k,rank)
@@ -197,7 +197,7 @@ function axis(svg) {
 }
 )}
 
-function _ticker(barSize,width,margin,n,formatDate,keyframes){return(
+function _ticker(barSize,width,margin,n,formatDate,parse,keyframes){return(
 function ticker(svg) {
   const now = svg.append("text")
       .style("font", `bold ${barSize}px var(--sans-serif)`)
@@ -206,16 +206,20 @@ function ticker(svg) {
       .attr("x", width - 6)
       .attr("y", margin.top + barSize * (n - 0.45))
       .attr("dy", "0.32em")
-      .text(formatDate(keyframes[0][0]));
+      .text(formatDate(parse(keyframes[0][0])));
 
   return ([date], transition) => {
-    transition.end().then(() => now.text(formatDate(date)));
+    transition.end().then(() => now.text(formatDate(parse(date))));
   };
 }
 )}
 
 function _formatDate(d3){return(
 d3.utcFormat("%Y")
+)}
+
+function _parse(d3){return(
+d3.timeParse("%Y-%m-%d %I:%M:%S")
 )}
 
 function _color(d3)
@@ -279,8 +283,9 @@ export default function define(runtime, observer) {
   main.variable(observer("textTween")).define("textTween", ["d3","formatNumber"], _textTween);
   main.variable(observer("formatNumber")).define("formatNumber", ["d3"], _formatNumber);
   main.variable(observer("axis")).define("axis", ["margin","d3","x","width","barSize","n","y"], _axis);
-  main.variable(observer("ticker")).define("ticker", ["barSize","width","margin","n","formatDate","keyframes"], _ticker);
+  main.variable(observer("ticker")).define("ticker", ["barSize","width","margin","n","formatDate","parse","keyframes"], _ticker);
   main.variable(observer("formatDate")).define("formatDate", ["d3"], _formatDate);
+  main.variable(observer("parse")).define("parse", ["d3"], _parse);
   main.variable(observer("color")).define("color", ["d3"], _color);
   main.variable(observer("x")).define("x", ["d3","margin","width"], _x);
   main.variable(observer("y")).define("y", ["d3","n","margin","barSize"], _y);
