@@ -1,6 +1,6 @@
 # Stack Overflow Scatter Plot
 
-https://observablehq.com/d/402b309105160b2a@915
+https://observablehq.com/d/1fb7df47a0df56db@923
 
 View this notebook in your browser by running a web server in this folder. For
 example:
@@ -14,14 +14,14 @@ import this module directly into your application. To npm install:
 
 ~~~sh
 npm install @observablehq/runtime@4
-npm install https://api.observablehq.com/d/402b309105160b2a@915.tgz?v=3
+npm install https://api.observablehq.com/d/1fb7df47a0df56db@923.tgz?v=3
 ~~~
 
 Then, import your notebook and the runtime as:
 
 ~~~js
 import {Runtime, Inspector} from "@observablehq/runtime";
-import define from "402b309105160b2a";
+import define from "1fb7df47a0df56db";
 ~~~
 
 To log the value of the cell named “foo”:

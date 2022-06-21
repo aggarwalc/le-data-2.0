@@ -52,9 +52,9 @@ function _scatter_plot(d3,xScale,yScale,DOM,size,margin,xGrid,yGrid,xSelect,ySel
   svg.append('g')
   		.attr('transform', `translate(0, ${size.height - margin.bottom})`)
     	.call(xAxis)
-      .style("font", "12px var(--sans-serif)")
+      .style("font", "14px var(--sans-serif)")
       .call(g => g.append("text")
-          .style("font", "bold 14px var(--sans-serif)")
+          .style("font", "bold 15px var(--sans-serif)")
           .attr("x", 880)
           .attr("y", -10)
           .attr("fill", "currentColor")
@@ -63,9 +63,9 @@ function _scatter_plot(d3,xScale,yScale,DOM,size,margin,xGrid,yGrid,xSelect,ySel
   svg.append('g')
     	.attr('transform', `translate(${margin.left}, 0)`)
     	.call(yAxis)
-      .style("font", "12px var(--sans-serif)")
+      .style("font", "14px var(--sans-serif)")
       .call(g => g.append("text")
-          .style("font", "bold 14px var(--sans-serif)")
+          .style("font", "bold 15px var(--sans-serif)")
           .attr("x", 10)
           .attr("y", 30)
           .attr("fill", "currentColor")
@@ -223,7 +223,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["all_tags_results.csv", {url: new URL("./files/1bba41c9725d4a5e60489164dde07f8903755a6fa885f27c19c5354cfba5be3a55bdb97d7aa87e21289eefb919db3b053d1c01615219f8a81f925ac1b9b22741", import.meta.url), mimeType: "text/csv", toString}]
+    ["all_tags_results.csv", {url: new URL("https://raw.githubusercontent.com/aggarwalc/le-data-2.0-DATA/main/Stack-Overflow/all-tags/all_tags_results.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["md"], _1);
@@ -233,7 +233,7 @@ export default function define(runtime, observer) {
   main.variable(observer("ySelect")).define("ySelect", ["Generators", "viewof ySelect"], (G, _) => G.input(_));
   main.variable(observer("viewof Regline")).define("viewof Regline", ["checkbox","reg"], _Regline);
   main.variable(observer("Regline")).define("Regline", ["Generators", "viewof Regline"], (G, _) => G.input(_));
-  main.variable(observer("prediction")).define("prediction", ["md","xSelect","guess"], _prediction);
+  main.variable(observer("prediction")).define("prediction", ["md","ySelect","guess"], _prediction);
   main.variable(observer("viewof Predict")).define("viewof Predict", ["text","xSelect","ySelect"], _Predict);
   main.variable(observer("Predict")).define("Predict", ["Generators", "viewof Predict"], (G, _) => G.input(_));
   main.variable(observer("scatter_plot")).define("scatter_plot", ["d3","xScale","yScale","DOM","size","margin","xGrid","yGrid","xSelect","ySelect","points","Regline","reg"], _scatter_plot);

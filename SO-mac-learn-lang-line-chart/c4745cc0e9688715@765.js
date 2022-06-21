@@ -1,7 +1,7 @@
 import define1 from "./7a9e12f9fb3d8e06@459.js";
 
 function _title(md){return(
-md`# Machine Learning Libraries
+md`# Machine Learning Languages
 
 Percentage of Stack Overflow questions by tag. Data: [Stack Exchange](https://data.stackexchange.com/)<br>Source: Mike Bostock - [Line Chart, Multiple Series](https://observablehq.com/@d3/multi-line-chart)`
 )}
@@ -17,19 +17,24 @@ Swatches(d3.scaleOrdinal(tags, d3.schemeSet3), {
 })
 )}
 
-function _chart(LineChart,data,Tags,width){return(
+function _chart(LineChart,data,Tags,parse,width){return(
 LineChart(data.filter(d => Tags.includes(d.tag)), {
-  x: d => new Date(d.date),
+  x: d => parse(d.date),
   y: d => d.percent,
   z: d => d.tag,
   yLabel: "% of Stack Overflow Q's",
   width,
-  height: 500
+  height: 500,
+  color: "steelblue"
 })
 )}
 
+function _focus(Generators,chart){return(
+Generators.input(chart)
+)}
+
 function _tags(data){return(
-new Set(data.map(d => d.tag))
+Array.from(new Set(data.map(d => d.tag))).sort()
 )}
 
 function _color3(d3,tags)
@@ -42,15 +47,11 @@ function _color3(d3,tags)
 
 
 function _data(FileAttachment){return(
-FileAttachment("machine_learning_libraries_results.csv").csv({typed: true})
+FileAttachment("machine_learning_languages_results.csv").csv({typed: true})
 )}
 
-function _8(data){return(
-data.slice(1,)
-)}
-
-function _focus(Generators,chart){return(
-Generators.input(chart)
+function _parse(d3){return(
+d3.timeParse("%Y-%m-%d %I:%M:%S")
 )}
 
 function _LineChart(d3,color3){return(
@@ -61,7 +62,7 @@ function LineChart(data, {
   title, // given d in data, returns the title text
   defined, // for gaps in data
   curve = d3.curveLinear, // method of interpolation between points
-  marginTop = 20, // top margin, in pixels
+  marginTop = 35, // top margin, in pixels
   marginRight = 30, // right margin, in pixels
   marginBottom = 30, // bottom margin, in pixels
   marginLeft = 40, // left margin, in pixels
@@ -129,12 +130,12 @@ function LineChart(data, {
       .on("touchstart", event => event.preventDefault());
 
   svg.append("g")
-      .style("font", "11px var(--sans-serif)")
+      .style("font", "14px var(--sans-serif)")
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(xAxis);
 
   svg.append("g")
-      .style("font", "11px var(--sans-serif)")
+      .style("font", "14px var(--sans-serif)")
       .attr("transform", `translate(${marginLeft},0)`)
       .call(yAxis)
       .call(g => g.select(".domain").remove())
@@ -142,9 +143,9 @@ function LineChart(data, {
           .attr("x2", width - marginLeft - marginRight)
           .attr("stroke-opacity", 0.1))
       .call(g => g.append("text")
-          .style("font", "bold 13px var(--sans-serif)")
+          .style("font", "bold 15px var(--sans-serif)")
           .attr("x", -marginLeft)
-          .attr("y", 10)
+          .attr("y", 15)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
           .text(yLabel));
@@ -171,7 +172,7 @@ function LineChart(data, {
 
   dot.append("text")
       .attr("font-family", "sans-serif")
-      .attr("font-size", 10)
+      .attr("font-size", 14)
       .attr("text-anchor", "middle")
       .attr("y", -8);
 
@@ -180,7 +181,7 @@ function LineChart(data, {
     const i = d3.least(I, i => Math.hypot(xScale(X[i]) - xm, yScale(Y[i]) - ym)); // closest point
     path.style("stroke", ([z]) => Z[i] === z ? null : "#ddd").filter(([z]) => Z[i] === z).raise();
     dot.attr("transform", `translate(${xScale(X[i])},${yScale(Y[i])})`);
-    if (T) dot.select("text").text(T[i]);
+    if (Y) dot.select("text").text(`${Z[i]} ${Y[i].toFixed(2)}%`);
     svg.property("value", O[i]).dispatch("input", {bubbles: true});
   }
 
@@ -280,19 +281,19 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["machine_learning_libraries_results.csv", {url: new URL("../data/machine_learning_libraries_results.csv", import.meta.url), mimeType: "text/csv", toString}]
+    ["machine_learning_languages_results.csv", {url: new URL("https://raw.githubusercontent.com/aggarwalc/le-data-2.0-DATA/main/Stack-Overflow/machine-learning-languages/machine_learning_languages_results.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer("title")).define("title", ["md"], _title);
   main.variable(observer("viewof Tags")).define("viewof Tags", ["Inputs","tags"], _Tags);
   main.variable(observer("Tags")).define("Tags", ["Generators", "viewof Tags"], (G, _) => G.input(_));
   main.variable(observer()).define(["Swatches","d3","tags"], _3);
-  main.variable(observer("chart")).define("chart", ["LineChart","data","Tags","width"], _chart);
+  main.variable(observer("chart")).define("chart", ["LineChart","data","Tags","parse","width"], _chart);
+  main.variable(observer("focus")).define("focus", ["Generators","chart"], _focus);
   main.variable(observer("tags")).define("tags", ["data"], _tags);
   main.variable(observer("color3")).define("color3", ["d3","tags"], _color3);
   main.variable(observer("data")).define("data", ["FileAttachment"], _data);
-  main.variable(observer()).define(["data"], _8);
-  main.variable(observer("focus")).define("focus", ["Generators","chart"], _focus);
+  main.variable(observer("parse")).define("parse", ["d3"], _parse);
   main.variable(observer("LineChart")).define("LineChart", ["d3","color3"], _LineChart);
   main.variable(observer("Swatches")).define("Swatches", ["d3","htl"], _Swatches);
   const child1 = runtime.module(define1);
