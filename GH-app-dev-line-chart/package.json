@@ -1,0 +1,14 @@
+{
+  "name": "c621a601c533ba38",
+  "main": "c621a601c533ba38@730.js",
+  "version": "730.0.0",
+  "homepage": "https://observablehq.com/d/c621a601c533ba38",
+  "author": {
+    "name": "aggarwalc",
+    "url": "https://observablehq.com/@aggarwalc"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
