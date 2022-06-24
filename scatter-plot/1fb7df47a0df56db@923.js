@@ -126,7 +126,7 @@ function _size(){return(
 )}
 
 function _margin(){return(
-{top: 12, right: 10, bottom: 20, left: 34}
+{top: 12, right: 10, bottom: 20, left: 38}
 )}
 
 async function _data(d3,FileAttachment){return(
