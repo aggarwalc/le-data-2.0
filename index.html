@@ -100,25 +100,30 @@
       <div class="container text-center mx-auto">
         <h1 class="text-2xl font-bold">Charts</h1>
         <ul class="inline-flex mx-auto my-2">
-          <li class="px-2">
-            <span
-              data-tag="all"
-              class="tag text-xs blueb hover:text-white cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-white bg-blue-400 uppercase last:mr-0 mr-1">All
-            </span>
-          </li>
-          <li class="px-2">
-            <span
-              data-tag="stack overflow"
-              class="tag text-xs blueb cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-blue-400 bg-blue-200 uppercase last:mr-0 mr-1">Stack Overflow
-            </span>
-          </li>
+
           <li class="px-2">
             <span
               data-tag="github"
               class="tag text-xs blueb cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-blue-400 bg-blue-200 uppercase last:mr-0 mr-1">GitHub
             </span>
           </li>
+
+          <li class="px-2">
+            <span
+              data-tag="stack overflow"
+              class="tag text-xs blueb cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-white bg-blue-400 uppercase last:mr-0 mr-1">Stack Overflow
+            </span>
+          </li>
+
+          <li class="px-2">
+            <span
+              data-tag="indeed"
+              class="tag text-xs blueb cursor-pointer font-semibold inline-block py-1 px-2 uppercase rounded text-blue-400 bg-blue-200 uppercase last:mr-0 mr-1">Indeed
+            </span>
+          </li>
+
         </ul>
+
 
         <!-- Stack Overflow Charts -->
 
@@ -186,7 +191,7 @@
 
           <!-- GitHub Charts -->
 
-          <div class="content_img chart p-2" data-tags="github">
+          <div class="content_img chart p-2 hidden" data-tags="github">
             <a href="GH-gen-prog-lang-line-chart/index.html">
               <img
                 class="w-full h-full object-cover"
@@ -196,7 +201,7 @@
             </a>
             <div>GH General Programming Languages</div>
           </div>
-          <div class="content_img chart p-2" data-tags="github">
+          <div class="content_img chart p-2 hidden" data-tags="github">
             <a href="GH-mac-learn-lang-line-chart/index.html">
               <img
                 class="w-full h-full object-cover"
@@ -206,7 +211,7 @@
             </a>
             <div>GH Machine Learning & Numerical Languages</div>
           </div>
-          <div class="content_img chart p-2" data-tags="github">
+          <div class="content_img chart p-2 hidden" data-tags="github">
             <a href="GH-app-dev-line-chart/index.html">
               <img
                 class="w-full h-full object-cover"
