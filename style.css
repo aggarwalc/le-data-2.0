@@ -103,14 +103,22 @@ span.blueb:hover {
         }
 }
 
+.dot {
+  height: 73px;
+  width: 73px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 15px 10px;
+  display: inline-block;
+}
 
-
-
-
-
-
-
-
+.rounded {
+    height: 95%;
+    width: 95%;
+    margin: 2px 2px;
+    background-position: 50% 50%;
+    object-fit: cover;
+}
 
 html {
   scroll-behavior: smooth;
