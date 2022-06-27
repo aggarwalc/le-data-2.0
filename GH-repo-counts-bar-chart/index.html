@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head class="blue">
+<meta charset="utf-8">
+<title>GH Repository Counts</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+/>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body class="blue">
+  <section class="py-6 bg-white">
+    <div class="container text-center mx-auto">
+      <h1 class="text-2xl font-bold">GH Repository Counts</h1>
+      <h2>Stacked Bar Chart</h2>
+    </div>
+    <div class="py-5 barwidth mx-auto">
+      <h1 class="text-lg font-bold">GitHub Repository Counts by language</h1>
+      <p class="text-sm">Data: <a class="hover:text-gray-400 text-blue-400 text-sm" href="https://github.com/search/advanced">GitHub</a></p>
+      <p class="text-xs py-1">Credit: Mike Bostock - <a class="hover:text-gray-400 text-blue-400" href="https://observablehq.com/@d3/stacked-bar-chart">Stacked Bar Chart</a></p>
+
+      <div name="viewof Select"></div>
+      <div name="key"></div>
+      <div name="chart" class="py-1"></div>
+
+    </div>
+
+
+    <script type="module">
+
+    import define from "./index.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+
+    const runtime = new Runtime();
+    const main = runtime.module(define, name => {
+      if (["viewof Select", "chart", "key"].includes(name)) {
+        return new Inspector(document.querySelector(`[name='${name}']`));
+      }
+    });
+    </script>
+
+    </section>
+
+    <div class="flex justify-center py-20">
+      <a href="../index.html">
+        <button class="bg-blue-400 flex justify-center text-white font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+        Back to home page
+        </button>
+      </a>
+    </div>
+</body>
