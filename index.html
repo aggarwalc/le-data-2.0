@@ -96,16 +96,14 @@
             import {Runtime, Library, Inspector} from "./bar-chart/runtime.js";
             import chart from "./bar-chart/index.js";
 
-            // Initialize the Observable Runtime, telling it to use our local copy of D3
-            // rather than loading one from a CDN.
+
             const runtime = new Runtime(new Library(name => {
               switch (name) {
                 case "d3@7": return d3;
               }
             }));
 
-            // Show the output of the “chart” and “viewof replay” cells in the DIV elements
-            // with the corresponding name.
+
             const main = runtime.module(chart, name => {
               if (["chart", "viewof replay"].includes(name)) {
                 return new Inspector(document.querySelector(`[name='${name}']`));
@@ -293,7 +291,6 @@
         </script>
       </div>
     </section>
-    <div name="chart"></div>
 
     <footer class="bg-blue-500 text-center py-5">
       <p class="text-xl text-white">Built by <span class="font-bold">Chirag Aggarwal</span> :)</p>
