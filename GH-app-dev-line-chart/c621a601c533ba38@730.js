@@ -15,7 +15,7 @@ Inputs.checkbox(tags, {value: tags})
 )}
 
 function _4(Swatches,d3,tags){return(
-Swatches(d3.scaleOrdinal(tags, d3.schemeSet3), {
+Swatches(d3.scaleOrdinal(tags, ["#8dd3c7","#ffffb3","#bebada", "#80b1d3","#fdb462","#b3de69"]), {
   title : "Tags",
   swatchSize : 15
 })
@@ -40,7 +40,7 @@ function _color3(d3,tags)
 {
   const scale = d3.scaleOrdinal()
     .domain(tags)
-    .range(d3.schemeSet3)
+    .range(["#8dd3c7","#ffffb3","#bebada", "#80b1d3","#fdb462","#b3de69"])
   return scale;
 }
 
