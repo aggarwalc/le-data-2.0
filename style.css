@@ -58,12 +58,14 @@ span.blueb:hover {
 }
 
 .content_img div{
+  text-align: center;
+  vertical-align: middle;
   position: absolute;
   bottom: 0;
   right: 5;
   margin-bottom: 9px;
-  padding: 94.5px 0px;
-  width: 95.6%;
+  width: 95%;
+  height: 95%;
   background: black;
   color: white;
   font-family: sans-serif;
@@ -85,8 +87,9 @@ span.blueb:hover {
   .padding {
     padding: 5rem;
   }
-  .content_img {
-    width: 50%;
+
+  .content_img{
+    width: 50%
   }
 }
 
