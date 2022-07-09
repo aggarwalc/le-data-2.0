@@ -189,7 +189,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["job_listings_results.csv", {url: new URL("https://raw.githubusercontent.com/aggarwalc/le-data-2.0-DATA/main/Indeed-LinkedIn/job_listings_results_6_30.csv", import.meta.url), mimeType: "text/csv", toString}]
+    ["job_listings_results.csv", {url: new URL("https://raw.githubusercontent.com/aggarwalc/le-data-2.0-DATA/main/Indeed-LinkedIn/job_listings_results_current.csv", import.meta.url), mimeType: "text/csv", toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer("chart")).define("chart", ["d3","width","height","addWebFont","background","x","gradient1","gradient2","data2","area","areaMirror","data","values","labels","percentages"], _chart);
