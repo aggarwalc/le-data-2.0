@@ -11,5 +11,6 @@ To view this project, navigate to the github-pages associated with this reposito
 ![](le-data-ss.png)
 
 ## Data
-To update the data so that the charts display the latest information navigate to the [le-data-2.0-DATA](https://github.com/aggarwalc/le-data-2.0-DATA) repository. <br>
-Follow the instructions in the README.md
+If you would like the charts to display the latest information, navigate to the [le-data-2.0-DATA](https://github.com/aggarwalc/le-data-2.0-DATA) repository. <br>
+To update the data, follow the instructions in the README.md
+
